@@ -31,13 +31,14 @@ def compare(item_a, item_b):
         return 0
 
 game_end = False
+score = 0
 celeb_a = select_celeb()[0]
 
 while not game_end:
-  
   celeb_b = select_celeb()[1]
 
   print(logo)
+  print(f"\n Current Score: {score}")
 
   print(f"Compare A: {data[celeb_a]['name']}, a {data[celeb_a]['description']}, from {data[celeb_a]['country']}")
   print(vs)
@@ -51,11 +52,15 @@ while not game_end:
   if answer == "a" and re_value == 1:
       print(f"Answer is correct! {data[celeb_a]['name']} has more follower!")
       celeb_a = celeb_b
+      score += 1
       clear()
   elif answer == "b" and re_value == 0:
       print(f"Answer is correct! {data[celeb_b]['name']} has more follower!")
       celeb_a = celeb_b
+      score += 1
       clear()
   else:
-      print("Game Over!")
       game_end = True
+      clear()
+      print(f"Game Over! your score is {score}")
+      
